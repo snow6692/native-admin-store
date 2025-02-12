@@ -1,3 +1,5 @@
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
 import { ADMIN } from "@/constants/constants";
 import { createClient } from "@/supabase/server";
 import { redirect } from "next/navigation";
@@ -21,7 +23,13 @@ async function AdminLayout({ children }: { children: ReactNode }) {
     }
     if (data.type !== ADMIN) return redirect("/");
   }
-  return <div>{children}</div>;
+  return (
+    <>
+      <Header />
+      <main className="min-h-[calc(100svh-128px)] py-3">{children}</main>
+      <Footer />
+    </>
+  );
 }
 
 export default AdminLayout;
