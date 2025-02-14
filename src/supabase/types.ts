@@ -9,6 +9,77 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      category: {
+        Row: {
+          created_at: string
+          id: number
+          imageUrl: string
+          name: string
+          products: number[] | null
+          slug: string
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          imageUrl: string
+          name: string
+          products?: number[] | null
+          slug: string
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          imageUrl?: string
+          name?: string
+          products?: number[] | null
+          slug?: string
+        }
+        Relationships: []
+      }
+      product: {
+        Row: {
+          category: number
+          created_at: string
+          heroImage: string
+          id: number
+          imagesUrl: string[]
+          maxQuantity: number
+          price: number
+          slug: string
+          title: string
+        }
+        Insert: {
+          category: number
+          created_at?: string
+          heroImage: string
+          id?: number
+          imagesUrl: string[]
+          maxQuantity: number
+          price: number
+          slug: string
+          title: string
+        }
+        Update: {
+          category?: number
+          created_at?: string
+          heroImage?: string
+          id?: number
+          imagesUrl?: string[]
+          maxQuantity?: number
+          price?: number
+          slug?: string
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "product_category_fkey"
+            columns: ["category"]
+            isOneToOne: false
+            referencedRelation: "category"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       users: {
         Row: {
           avatar_url: string

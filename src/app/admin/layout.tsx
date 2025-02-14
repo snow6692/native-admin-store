@@ -1,6 +1,7 @@
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { ADMIN } from "@/constants/constants";
+import { RenderMounted } from "@/providers/render-mounted";
 import { createClient } from "@/supabase/server";
 import { redirect } from "next/navigation";
 import { ReactNode } from "react";
@@ -25,9 +26,11 @@ async function AdminLayout({ children }: { children: ReactNode }) {
   }
   return (
     <>
-      <Header />
-      <main className="min-h-[calc(100svh-128px)] py-3">{children}</main>
-      <Footer />
+      <RenderMounted>
+        <Header />
+        <main className="min-h-[calc(100svh-128px)] py-3">{children}</main>
+        <Footer />
+      </RenderMounted>
     </>
   );
 }
