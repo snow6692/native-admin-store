@@ -23,6 +23,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogFooter,
+  DialogDescription,
 } from "@/components/ui/dialog";
 import { Category } from "@/app/admin/categories/categories.types";
 import { createOrUpdateProductSchema } from "@/app/admin/products/schema";
@@ -217,15 +218,17 @@ export const ProductPageComponent: FC<Props> = ({
           defaultValues={currentProduct}
         />
 
-        {/* Delete  Product Modal */}
+        {/* Delete Product Modal */}
         <Dialog open={isDeleteModalOpen} onOpenChange={setIsDeleteModalOpen}>
           <DialogContent>
             <DialogHeader>
               <DialogTitle>Delete Product</DialogTitle>
+              <DialogDescription>
+                Are you sure you want to delete {currentProduct?.title}?
+              </DialogDescription>
             </DialogHeader>
-            <p>Are you sure you want to delete ${currentProduct?.title}</p>
             <DialogFooter>
-              <Button onClick={deleteProductHandler} variant={"destructive"}>
+              <Button variant="destructive" onClick={deleteProductHandler}>
                 Delete
               </Button>
             </DialogFooter>
