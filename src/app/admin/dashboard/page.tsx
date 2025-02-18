@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
+import DashboardComponent from "./page-component";
+import { getMonthlyOrders } from "@/actions/orders";
 
-function Dashboard() {
-  return (
-    <div>dashboard</div>
-  )
+async function Dashboard() {
+  const monthlyOrders = await getMonthlyOrders();
+  console.log(monthlyOrders);
+  return <DashboardComponent monthlyOrders={monthlyOrders} />;
 }
 
-export default Dashboard
+export default Dashboard;
